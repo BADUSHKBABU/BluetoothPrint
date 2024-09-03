@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:printapp/printpage.dart';
+import 'package:printapp/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home:PrintPage()
+      home:Splashscreen()
     );
   }
 }

@@ -22,10 +22,7 @@ class _PrintPageState extends State<PrintPage> {
   String data="";
   Uint8List imageBytes=Uint8List(0);
   Uint8List  ?screenshot;
-  void initState() {
-    super.initState();
-    _initializeBluetooth();
-  }
+
   void _initializeBluetooth() async {
     bool isAvailable = await bluetooth.isAvailable ?? false;
     if (isAvailable) {
@@ -69,10 +66,18 @@ class _PrintPageState extends State<PrintPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar(title: Text("B-Print",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
         ),
         body: ListView(
             children: [
+              ElevatedButton(style:ButtonStyle(backgroundColor: WidgetStateProperty.resolveWith((state)=>Colors.blue),
+
+              ) ,onPressed: (){
+                setState(() {
+                  _initializeBluetooth();
+                });
+              }, child: Text("Scan For Bluetooth devices"),),
+
               DropdownButton<BluetoothDevice>(
                 hint: Text('Select Device'),
                 value: _selectedDevice,
